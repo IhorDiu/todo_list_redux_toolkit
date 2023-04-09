@@ -1,5 +1,8 @@
-import './App.css';
 import { useState } from 'react';
+import TodoList from './TodoList';
+import InputField from './InputField';
+
+import './App.css';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -38,26 +41,16 @@ const App = () => {
 
   return (
     <div className="App">
-      <label>
-        <input value={text} onChange={e => setText(e.target.value)} />
-        <button onClick={addTodo}>Add Todo</button>
-      </label>
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => toggleTodoComplete(todo.id)}
-            />
-            <span>{todo.text}</span>
-            <span className="delete" onClick={() => removeTodo(todo.id)}>
-              &times;
-            </span>
-            {/* style={{ color: 'red' }} */}
-          </li>
-        ))}
-      </ul>
+      <InputField 
+        text={text} 
+        handleInput={setText} 
+        handleSubmit={addTodo} 
+      />
+      <TodoList
+        todos={todos}
+        toggleTodoComplete={toggleTodoComplete}
+        removeTodo={removeTodo}
+      />
     </div>
   );
 };
