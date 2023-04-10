@@ -9,4 +9,4 @@ const InputField = ({ text, handleInput, handleSubmit }) => {
   )
 }
 
-export default InputField
+export default InputField 
